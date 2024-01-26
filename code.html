@@ -72,7 +72,7 @@
             </h3>
             <!-- ↓自由に要素を追加・編集することができます -->
             <div class="form-group">
-              <label>お名前test</label><span class="badge bg-secondary text-white">任意</span>
+              <label>お名前</label><span class="badge bg-secondary text-white">任意</span>
               <input name="お名前1" type="text" class="form-control">
             </div>
 
@@ -83,13 +83,40 @@
             </div>
 
             <div class="form-group">
+              <label>電話番号</label><span class="badge bg-secondary text-white">任意</span>
+              <input name="電話番号1" data-formrun-type="tel" class="form-control" data-formrun-chars-max="10">
+              <div data-formrun-show-if-error="電話番号1" class="text-danger">電話番号を正しく入力してください</div>
+            </div>
+
+            <div class="form-group">
+              <label>住所</label><span class="badge bg-secondary text-white">任意</span>
+              <input name="住所1" type="text" class="form-control">
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-2">お問い合わせ種類</label>
+              <div class="col-sm-10">
+                <select class="form-control form-control-lg" name="お問い合わせ種類" data-formrun-required>
+                  <option value>--選択してください--</option>
+                  <option value="inquiry-type-1">お問い合わせ種類1</option>
+                  <option value="inquiry-type-2">お問い合わせ種類2</option>
+                  <option value="inquiry-type-3">お問い合わせ種類3</option>
+                  <option value="inquiry-type-4">お問い合わせ種類4</option>
+                  <option value="inquiry-type-5">お問い合わせ種類5</option>
+                  <option value="inquiry-type-other">その他</option>
+                </select>
+                <span class="text-danger" data-formrun-show-if-error="業種">お問い合わせ種類を正しく入力してください</span>
+              </div>
+            </div>
+
+            <div class="form-group">
               <label>お問い合わせ</label><span class="badge bg-danger text-white">必須</span>
               <textarea name="お問い合わせ" class="form-control" data-formrun-required></textarea>
               <div data-formrun-show-if-error="お問い合わせ" class="text-danger">お問い合わせ入力してください</div>
             </div>
 
             <div class="form-group form-group">
-              <div><label>個人情報利用同意</label><span class="badge bg-danger text-white">必須</span></div>
+              <div><label>個人情報利用同意</label><span class="badge bg-secondary text-white">任意</span>
               <input type="checkbox" name="個人情報利用同意" class="form-check-label" data-formrun-required>
               <div data-formrun-show-if-error="個人情報利用同意" class="text-danger">同意してください</div>
             </div>
@@ -107,83 +134,6 @@
               <label for="_formrun_gotcha" class="form-check-label">If you are a human, ignore this field</label>
               <input type="text" name="_formrun_gotcha" id="_formrun_gotcha" tabindex="-1" class="form-check-input">
             </div>
-          </div>
-        </div>
-
-        <div class="card mb-3">
-          <div class="card-body">
-
-            <h3>
-              バリデーション
-            </h3>
-
-            <div class="form-group">
-              <label>電話番号バリデーション</label><span class="badge bg-secondary text-white">任意</span>
-              <input name="電話番号バリデーション" type="text" data-formrun-type="tel" class="form-control">
-              <div data-formrun-show-if-error="電話番号バリデーション" class="text-danger">電話番号形式で入力してください</div>
-            </div>
-
-            <div class="form-group">
-              <label>電話番号の入力最大桁数を設定</label><span class="badge bg-secondary text-white">任意</span>
-              <input name="電話番号バリデーション2" type="text" data-formrun-type="tel" data-formrun-chars-max="10"
-                class="form-control">
-              <div data-formrun-show-if-error="電話番号バリデーション2" class="text-danger">電話番号形式で入力してください（最大桁数は10桁です）</div>
-            </div>
-
-            <div class="form-group">
-              <label>メールアドレス</label><span class="badge bg-secondary text-white">任意</span>
-              <input name="メールアドレス2" type="text" data-formrun-type="email" class="form-control">
-              <div data-formrun-show-if-error="メールアドレス2" class="text-danger">メールアドレスを正しく入力してください</div>
-            </div>
-
-            <div class="form-group">
-              <label>メールアドレス再入力</label><span class="badge bg-secondary text-white">任意</span>
-              <input name="メールアドレス_confirm" type="text" data-formrun-type="email_confirmation"
-                data-formrun-confirmed-name="メールアドレス2" class="form-control">
-              <div data-formrun-show-if-error="メールアドレス_confirm" class="text-danger">メールアドレスが一致しません</div>
-            </div>
-
-            <div class="form-group">
-              <label>数字バリデーション</label><span class="badge bg-secondary text-white">任意</span>
-              <input name="個数" type="number" data-formrun-type="number" max="100" min="-100" class="form-control">
-              <div data-formrun-show-if-error="個数" class="text-danger">100から-100の間で指定してください</div>
-            </div>
-
-            <div class="form-group">
-              <label>必須バリデーション</label><span class="badge bg-danger text-white">必須</span>
-              <input name="お名前2" type="text" class="form-control" data-formrun-required>
-              <div data-formrun-show-if-error="お名前2" class="text-danger">この項目は必須です</div>
-            </div>
-
-            <div class="form-group">
-              <label>郵便番号による住所補完と都道府県タグの自動設定</label><span class="badge bg-secondary text-white">任意</span>
-              <!-- マークアップ例2 (住所を複数フィールドに分割する場合) -->
-              <div class="ml-3">
-                <label>郵便番号</label>
-                <input type="text" name="郵便番号" data-formrun-type="postal-code-jp" class="form-control">
-                <label>都道府県</label>
-                <select name="都道府県" data-formrun-type="region prefecture-jp" data-formrun-type="region"
-                  class="form-control"></select>
-                <label>市区町村</label>
-                <input type="text" name="市区町村" data-formrun-type="locality street-address" class="form-control">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>項目にエラーがない場合に要素を表示する(動作しない)</label><span class="badge bg-danger text-white">必須</span>
-              <input name="お名前3" type="text" class="form-control" data-formrun-required>
-              <div data-formrun-show-if-success="お名前3" class="text-success">入力OK！</div>
-              <img src="" data-formrun-show-if-success="お名前3" />
-              <div data-formrun-show-if-error="お名前3" class="text-danger">この項目は必須です</div>
-            </div>
-
-            <div class="form-group">
-              <label>電話番号の入力最小桁数を設定</label><span class="badge bg-secondary text-white">任意</span>
-              <input name="電話番号バリデーション3" type="text" data-formrun-type="tel" data-formrun-chars-min="4"
-                class="form-control">
-              <div data-formrun-show-if-error="電話番号バリデーション3" class="text-danger">電話番号形式で入力してください（最小桁数は5桁です）</div>
-            </div>
-
           </div>
         </div>
 
