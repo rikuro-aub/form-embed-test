@@ -52,7 +52,7 @@
     const displayArea = document.querySelector('#display_area');
     clearChildren(displayArea);
     appendScriptTag(displayArea, embedData.js_url);
-    appendDivTag(displayArea, embedData.friendly_key, embedData.redirectSetting, embedData.host);
+    appendDivTag(displayArea, embedData.friendly_key, embedData.redirectSetting, embedData.host, embedData.dynamicInit);
   }
 
   const clearChildren = (displayArea) => {
@@ -65,13 +65,14 @@
     displayArea.append(script);
   }
 
-  const appendDivTag = (displayArea, friendlyKey, redirectSetting, host) => {
+  const appendDivTag = (displayArea, friendlyKey, redirectSetting, host, dynamicInit) => {
     const div = document.createElement('div');
     div.setAttribute('data-formrun-form', friendlyKey);
     div.setAttribute('data-formrun-redirect', redirectSetting);
     if (host) {
       div.setAttribute('data-formrun-host', host);
     }
+    div.setAttribute('data-dynamic-init', dynamicInit);
     div.classList.add('formrun-embed');
     displayArea.append(div);
   }
@@ -81,6 +82,7 @@
     const redirectSetting = inputtedScript.match(/data-formrun-redirect="true"/);
     const friendlyKeyMatch = inputtedScript.match(/data-formrun-form="(@.+?)"/);
     const hostMatch = inputtedScript.match(/data-formrun-host="(.+?)"/);
+    const dynamicInitSetting = inputtedScript.match(/data-dynamic-init="true"/);
 
     if (!jsUrlMatch || !friendlyKeyMatch) {
       return null;
@@ -89,7 +91,8 @@
       js_url: jsUrlMatch[1],
       friendly_key: friendlyKeyMatch[1],
       redirectSetting: !!redirectSetting ? 'true' : 'false',
-      host: hostMatch ? hostMatch[1] : null
+      host: hostMatch ? hostMatch[1] : null,
+      dynamicInit: !!dynamicInitSetting ? 'true' : 'false'
     }
   }
 
@@ -106,7 +109,7 @@
     const displayArea = document.querySelector('#display_area');
     clearChildren(displayArea);
     appendScriptTag(displayArea, embedData.js_url);
-    appendDivTag(displayArea, embedData.friendly_key, embedData.redirectSetting, embedData.host);
+    appendDivTag(displayArea, embedData.friendly_key, embedData.redirectSetting, embedData.host, embedData.dynamicInit);
     swapButtonClass('btn-primary', 'btn-secondary');
   }
 
